@@ -69,17 +69,11 @@
                                      <select class="selectpicker form-control" name = "university_major"  id="log2" data-live-search="true" required >
                                       <option value="" disabled selected>학교-전공</option>
                                       <option value = "전남대 경영학과" >전남대 경영학과</option>
-                                      <option value = "전남대 | 행정학과" >전남대 행정학과</option>
-                                      <option >전남대 경제학과</option>
-                                      <option>전남대 식품영양학과</option>
-                                      <option >전남대 기계공학과</option>
-                                      <option >전남대 분자생물학과과</option>
-                                      <option>전남대 농업학과</option>
-                                      <option >전남대 물리학과</option>
-                                      <option >전남대 통계하과</option>
-                                      <option>서울대 경영학과</option>
-                                      <option >서울대 행정학과</option>
-                                      <option >서울대 경제학과</option>
+                                      <option value = "전남대 행정학과" >전남대 행정학과</option>
+                                      <option value = "전남대 경제학과" >전남대 경제학과</option>
+                                      <option value = "전남대 식품영양학과" >전남대 식품영양학과</option>
+                                      <option value = "전남대 기계공학과" >전남대 기계공학과</option>
+                                      <option value = "전남대 분자생물공학과" >전남대 분자생물학과</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -116,10 +110,12 @@
             <div class="row">
                 <div class="col-lg-12">
                     
-                    <%  @jnu.each do |x| %>
-                         <%= x.tier %>, <%= x.id %>, <%= x.division %>, <%= x.point %>, <%= x.total_point %><br>
-                         
-                    <% end %>
+                    <% @jnu.each do |x| %>
+                         <%= x.summoner %>, <%= x.tier %>, <%= x.id %>, <%= x.division %>, <%= x.point %>, <%= x.total_point %>, <%= x.champion %><br>
+                    <% end %><br><br>
+                    
+                  
+    
                     <img class="img-responsive" src="img/profile.png" alt="">
                     <div class = "row">
                         <div class = "col-md-3"></div>

@@ -22,17 +22,20 @@ ActiveRecord::Schema.define(version: 20160507132819) do
     t.integer  "loose"
     t.integer  "total_point"
     t.string   "champion"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "summoners", force: :cascade do |t|
     t.string   "summoner"
     t.string   "summoner_number"
     t.string   "university"
     t.string   "major"
     t.string   "admission"
     t.boolean  "sex"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "summoners", force: :cascade do |t|
+    t.string   "summoner"
+    t.string   "summoner_number"
+    t.string   "university"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

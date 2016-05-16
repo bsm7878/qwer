@@ -1,17 +1,12 @@
-    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
     
     
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="/css/freelancer.css" rel="stylesheet">
     <!-- pagination custom css -->
-    <style>
-        .pagination>li>a,
-        .pagination>li>span {
-          border: 1px solid white;
-          background-color: #2c3e50;
-        }
-    </style>
+
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -24,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#page-top">QWER.XXX</a>
+                <a class="navbar-brand" href="/">QWER.XXX</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -34,13 +29,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio">회원가입</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="/">About</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#contact">Contact</a>
+                        <a href="/">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -57,21 +46,20 @@
                 </div>
                 <div class="col-lg-4">
                         <div class="thumbnail">
-                          <img class="img-responsive img-circle" src="/timo.png" height="160" width="160" alt="" style = "margin-top:20px;">
+                          <img class="img-responsive img-circle" src="<%= champion_uri(@main_image) %>" height="160" width="160" alt="" style = "margin-top:20px;">
                           <div class="caption">
                             <span><h3><%= params[:name] %></h3></span>
-                            <span><h6>(<%= @jnu.tier %> <%= @jnu.division %>)</h6></span>
-                            포인트: <%= @jnu.point %><br>
+                            <span><h6>(<%= @name.tier %> <%= @name.division %>)</h6></span>
+                            포인트: <%= @name.point %><br>
                             전국 대학랭킹 : 13위<br>
-                            학교 개인랭킹 : 35위<br>
-                            승률:  %
+                            학교 개인랭킹 : <%= @name_name.to_i + 1 %>위(상위 1%)<br>
+                            승률: %
                             <p style = "margin-top:40px;">
                               <form action = "/home/update" method = "GET">
-                                <input type ="hidden" name = "name" value = "<%= @jnu.id %>">
-                                <input type="submit" class="btn btn-primary" value = "업데이트"></button>
+                                <input type ="hidden" name = "name" value = "<%= @name.id %>">
+                                <input type="submit" class="btn btn-primary" value = "정보갱신"></button>
                                 <a href="#" class="btn btn-default" role="button">정보</a>
                               </form> 
-                              
                             </p>
                           </div>
                         </div>
@@ -87,14 +75,14 @@
         <div class="container">
             <ul class="nav nav-pills nav-justified nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#home">학교개인랭킹</a></li>
-                <li><a data-toggle="tab" href="#menu1">전공개인랭킹</a></li>
-                <li><a data-toggle="tab" href="#menu2">전국 랭킹</a></li>
-                <li><a data-toggle="tab" href="#menu3">전국 대학랭킹</a></li>
+                <li><a data-toggle="tab" href="#menu1">전공랭킹</a></li>
+                <li><a data-toggle="tab" href="#menu2">전공개인랭킹</a></li>
+                <li><a data-toggle="tab" href="#menu3">전국대학랭킹</a></li>
             </ul>
             <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
                     <div class="form-group" style = "margin-top:10px;">
-                      <input type="email" class="form-control" id="filter" placeholder="소환사 이름을 적어주세요...">
+                      <input type="text" class="form-control" id="filter" placeholder="소환사 이름을 적어주세요...">
                     </div>
                     <table class="table table-hover">
                       <thead>
@@ -103,153 +91,133 @@
                           <th>이름</th>
                           <th>학번</th>
                           <th>전공</th>
-                          <th>전공</th>
                           <th>티어</th>
                         </tr>
                       </thead>
                       <tbody class = "searchable">
-                        <% @jnu_all.each do |x| %>
+                        <% a = 1 %>
+                        <% @name_all.each do |x| %>
                           <tr>
-                            <th scope="row">1</th>
+                            <th scope="row"><%= a %></th>
                             <td>
-                             <img src="/timo.png" height="23" width="23" alt="자주사용하는 캐릭터" class="img-circle"> <%= x.tier %>
+                             <img src="<%= champion_uri(x.champion) %>" height="25" width="25" alt="자주사용하는 캐릭터" class="img-circle"> <%= x.summoner %>
                             </td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
+                            <td><%= x.admission %>학번</td>
+                            <td><%= x.major %></td>
+                            <td>
+                                <% if x.tier == "SILVER" %>
+                                    <img src = "/tier_img/silver.png" height="35" width="35" alt="자주사용하는 캐릭터" class="img-circle" data-toggle="tooltip"  data-placement="right"  title="<%= x.tier %> <%= x.division %>">
+                                <% elsif x.tier == "GOLD"  %>
+                                    <img src = "/tier_img/gold.png" height="35" width="35" alt="자주사용하는 캐릭터" class="img-circle" data-toggle="tooltip"  data-placement="right"  title="<%= x.tier %> <%= x.division %>">
+                                <% elsif x.tier == "PLATINUM" %>
+                                    <img src = "/tier_img/platinum.png" height="35" width="35" alt="자주사용하는 캐릭터" class="img-circle" data-toggle="tooltip"  data-placement="right"  title="<%= x.tier %> <%= x.division %>">
+                                <% elsif x.tier == "DIAMOND" %>
+                                    <img src = "/tier_img/diamond.png" height="35" width="35" alt="자주사용하는 캐릭터" class="img-circle" data-toggle="tooltip"  data-placement="right"  title="<%= x.tier %> <%= x.division %>">
+                                <% elsif x.tier == "CHALLENGER" %>
+                                    <img src = "/tier_img/challenger.png" height="35" width="35" alt="자주사용하는 캐릭터" class="img-circle" data-toggle="tooltip"  data-placement="right"  title="<%= x.tier %> <%= x.division %>">
+                                <% else %>
+                                    <img src = "/tier_img/master.png" height="35" width="35" alt="자주사용하는 캐릭터" class="img-circle" data-toggle="tooltip"  data-placement="right"  title="<%= x.tier %> <%= x.division %>">
+                                <% end %>
+                            </td>
                           </tr>
+                          <% a=a+1 %>
                         <% end %>
                       </tbody>
                     </table>
-                    <div class = "row">
-                        <div class = "col-md-4"></div>
-                        <div class = "col-md-4">
-                            <nav>
-                                <ul class="pagination">
-                                <li>
-                                  <a href="#" aria-label="default">
-                                    <span aria-hidden="true">&laquo;</span>
-                                  </a>
-                                </li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li>
-                                  <a href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                  </a>
-                                </li>
-                                </ul>
-                            </nav>    
-                        </div>
-                        <div class = "col-md-4"></div>
-                    </div>
-                    
                 </div>
                 <div id="menu1" class="tab-pane fade">
                     <div class="form-group" style = "margin-top:10px;">
-                      <input type="email" class="form-control" id="filter" placeholder="소환사 이름을 적어주세요...">
+                      <input type="email" class="form-control" id="filter2" placeholder="소환사 이름을 적어주세요...">
                     </div>
                     <table class="table table-hover">
                       <thead>
                         <tr>
-                          <th>#</th>
-                          <th>menu1 Name</th>
-                          <th>menu1 Name</th>
-                          <th>menu1</th>
+                          <th>순위</th>
+                          <th>전공</th>
+                          <th>포인트</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody class = "searchable2">
+                        <% b = 1 %>   
+                        <% @major_rank_final.each do |x, y| %>  
                         <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
+                          <th scope="row"><%= b %></th>
+                          <td><%= x %></td>
+                          <td><%= number_with_delimiter(y.round, :delimiter => ',') %></td>
                         </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
+                        <% b = b + 1 %>
+                        <% end %>
                       </tbody>
                     </table>
                 </div>
                 <div id="menu2" class="tab-pane fade">
                     <div class="form-group" style = "margin-top:10px;">
-                      <input type="email" class="form-control" id="filter" placeholder="소환사 이름을 적어주세요...">
+                      <input type="email" class="form-control" id="filter4" placeholder="소환사 이름을 적어주세요...">
                     </div>
                     <table class="table table-hover">
                       <thead>
                         <tr>
-                          <th>#</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Username</th>
+                          <th>순위</th>
+                          <th>이름</th>
+                          <th>학번</th>
+                          <th>티어</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody class = "searchable4">
+                        <% c = 1 %>   
+                        <%  @rank_in_major.each do |x| %>
                         <tr>
-                          <th scope="row">1</th>
-                          <td>menu2</td>
-                          <td>menu2</td>
-                          <td>@menu2</td>
+                          <th scope="row"><%= c %></th>
+                          <td><img src="<%= champion_uri(x.champion) %>" height="25" width="25" alt="자주사용하는 캐릭터" class="img-circle"> <%= x.summoner %></td>
+                          <td><%= x.admission %>학번</td>
+                          <td>
+                            <% if x.tier == "SILVER" %>
+                                <img src = "/tier_img/silver.png" height="35" width="35" alt="자주사용하는 캐릭터" class="img-circle" data-toggle="tooltip"  data-placement="right"  title="<%= x.tier %> <%= x.division %>">
+                            <% elsif x.tier == "GOLD"  %>
+                                <img src = "/tier_img/gold.png" height="35" width="35" alt="자주사용하는 캐릭터" class="img-circle" data-toggle="tooltip"  data-placement="right"  title="<%= x.tier %> <%= x.division %>">
+                            <% elsif x.tier == "PLATINUM" %>
+                                <img src = "/tier_img/platinum.png" height="35" width="35" alt="자주사용하는 캐릭터" class="img-circle" data-toggle="tooltip"  data-placement="right"  title="<%= x.tier %> <%= x.division %>">
+                            <% elsif x.tier == "DIAMOND" %>
+                                <img src = "/tier_img/diamond.png" height="35" width="35" alt="자주사용하는 캐릭터" class="img-circle" data-toggle="tooltip"  data-placement="right"  title="<%= x.tier %> <%= x.division %>">
+                            <% elsif x.tier == "CHALLENGER" %>
+                                <img src = "/tier_img/challenger.png" height="35" width="35" alt="자주사용하는 캐릭터" class="img-circle" data-toggle="tooltip"  data-placement="right"  title="<%= x.tier %> <%= x.division %>">
+                            <% else %>
+                                <img src = "/tier_img/master.png" height="35" width="35" alt="자주사용하는 캐릭터" class="img-circle" data-toggle="tooltip"  data-placement="right"  title="<%= x.tier %> <%= x.division %>">
+                            <% end %>
+                          </td>
                         </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
+                        <% c = c + 1 %>
+                        <% end %>
                       </tbody>
                     </table>
                 </div>
                 <div id="menu3" class="tab-pane fade">
                     <div class="form-group" style = "margin-top:10px;">
-                      <input type="email" class="form-control" id="filter" placeholder="소환사 이름을 적어주세요...">
+                      <input type="email" class="form-control" id="filter3" placeholder="소환사 이름을 적어주세요...">
                     </div>
                     <table class="table table-hover" >
                       <thead>
                         <tr>
-                          <th>#</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Username</th>
+                          <th>순위</th>
+                          <th>대학 이름</th>
+                          <th>포인트</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody class = "searchable3">
                         <tr>
                           <th scope="row">1</th>
-                          <td>menu3</td>
-                          <td>menu3</td>
-                          <td>@menu3</td>
+                          <td> <img src="/jnu.png" height="23" width="23" alt="자주사용하는 캐릭터" class="img-circle"> 전남대학교</td>
+                          <td>8,500</td>
                         </tr>
                         <tr>
                           <th scope="row">2</th>
                           <td>Jacob</td>
                           <td>Thornton</td>
-                          <td>@fat</td>
                         </tr>
                         <tr>
                           <th scope="row">3</th>
                           <td>Larry</td>
                           <td>the Bird</td>
-                          <td>@twitter</td>
                         </tr>
                       </tbody>
                     </table>
@@ -335,11 +303,71 @@
           }(jQuery));
       
       });
+      
+      $(document).ready(function () {
+      
+          (function ($) {
+      
+              $('#filter2').keyup(function () {
+      
+                  var rex = new RegExp($(this).val(), 'i');
+                  $('.searchable2 tr').hide();
+                  $('.searchable2 tr').filter(function () {
+                      return rex.test($(this).text());
+                  }).show();
+      
+              })
+      
+          }(jQuery));
+      
+      });
+      
+      $(document).ready(function () {
+      
+          (function ($) {
+      
+              $('#filter3').keyup(function () {
+      
+                  var rex = new RegExp($(this).val(), 'i');
+                  $('.searchable3 tr').hide();
+                  $('.searchable3 tr').filter(function () {
+                      return rex.test($(this).text());
+                  }).show();
+      
+              })
+      
+          }(jQuery));
+      
+      });
+      
+      $(document).ready(function () {
+      
+          (function ($) {
+      
+              $('#filter4').keyup(function () {
+      
+                  var rex = new RegExp($(this).val(), 'i');
+                  $('.searchable4 tr').hide();
+                  $('.searchable4 tr').filter(function () {
+                      return rex.test($(this).text());
+                  }).show();
+      
+              })
+      
+          }(jQuery));
+      
+      });
     </script>
+    
+    <!-- 툴팁 -->
+    <script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+    });
+    </script>
+
     <!-- table search 끝 -->
     
-    
-
     <!-- Plugin JavaScript -->
     <script src="/js/classie.js"></script>
     <script src="/js/cbpAnimatedHeader.js"></script>

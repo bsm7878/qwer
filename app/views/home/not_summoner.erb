@@ -1,0 +1,143 @@
+    <!-- select2 CDN -->
+    <link href="/select2.css" rel="stylesheet" type="text/css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>    
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">QWER.run</a>
+            </div>
+
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <br><br>
+                <div class="col-lg-12 text-center">
+                    <h2>추가 정보 입력</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col-md-4"></div>
+                <div class="col-md-4" id = "wrapper">
+                    <div class = "text-center">
+                        <img src="<%= @image %>" alt="캐릭터사진" class="img-circle">
+                        <br><br>
+                        <span style = "color: black; font-size: 20px; font-weight: bold;"><%= @ab %></span><br>
+                        (<%= @tier_info %> <%= @division_info %>)
+                    </div>
+                    <br>
+                    <form action="/home/sign" method="post">
+                      <div class="form-group">
+                          <select class=" form-control js-example-basic-single" name = "university_major" required  >
+                              <option value="" disabled selected>학교-전공</option>
+                            <% @univ_list.each do |x| %>  
+                                  <option value = "<%= x.univ_name %>"><%= x.univ_name %></option>    
+                           <% end %>   
+                          </select>
+                      </div>
+                      <div class="form-group">
+                            <select class="form-control" name = "admission" required>
+                              <option value="" disabled selected>학번</option>
+                              <option value = "02">2002</option>
+                              <option value = "03">2003</option>
+                              <option value = "04">2004</option>
+                              <option value = "05">2005</option>
+                              <option value = "06">2006</option>
+                              <option value = "07">2007</option>
+                              <option value = "08">2008</option>
+                              <option value = "09">2009</option>
+                              <option value = "10">2010</option>
+                              <option value = "11">2011</option>
+                              <option value = "12">2012</option>
+                              <option value = "13">2013</option>
+                              <option value = "14">2014</option>
+                              <option value = "15">2015</option>
+                              <option value = "16">2016</option>
+                            </select>
+                      </div>
+                      <div class="form-group">
+                            <select class="form-control" name = "sex" required>
+                              <option value="" disabled selected>성별</option>
+                              <option value = "0">남성</option>
+                              <option value = "1">여성</option>   
+                            </select>
+                      </div>
+                      <button type="submit"  class="btn btn-primary" style = "width:100%;">추가</button>
+                    </form> 
+
+                </div>
+                <div class = "col-md-4"></div>
+                
+            </div>
+        </div>
+    </section>
+
+    
+
+
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>Around Web</h3>
+                        <ul class="list-inline">
+                            <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                            </li>
+                        </ul>
+                        Copyright &copy; qwer.run
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    
+        
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+    
+   
+    
+
+
+    <!-- Plugin JavaScript -->
+    <script src="/js/classie.js"></script>
+    <script src="/js/cbpAnimatedHeader.js"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+      $(".js-example-basic-single").select2();
+    });
+    
+    </script>

@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516053740) do
+ActiveRecord::Schema.define(version: 20160530164723) do
+
+  create_table "chosuns", force: :cascade do |t|
+    t.integer  "summoner_id"
+    t.string   "tier"
+    t.string   "division"
+    t.integer  "point"
+    t.integer  "win"
+    t.integer  "loose"
+    t.integer  "total_point"
+    t.string   "champion"
+    t.string   "summoner"
+    t.string   "summoner_number"
+    t.string   "university"
+    t.string   "major"
+    t.string   "admission"
+    t.boolean  "sex"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "inhas", force: :cascade do |t|
     t.integer  "summoner_id"
@@ -51,12 +70,24 @@ ActiveRecord::Schema.define(version: 20160516053740) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "summoners", force: :cascade do |t|
     t.string   "summoner"
     t.string   "summoner_number"
     t.string   "university"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "univ_majors", force: :cascade do |t|
+    t.string   "univ_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

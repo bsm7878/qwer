@@ -9,7 +9,6 @@
             color:black;
             border-color: #dce4ec;
         }
-
     </style>
 
     <!-- Navigation -->
@@ -23,90 +22,70 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#page-top">QWER.XXX</a>
+                <a class="navbar-brand" href="/">QWER.run</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse"  id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li >
-                        <a data-toggle="modal" data-target="#exampleModal" style="cursor:pointer">소환사등록</a>
-                    </li>
-                    <li >
-                        <a href="/">Contact</a>
+                        <a data-toggle="modal" data-target="#exampleModal" style="cursor:pointer">Contact</a>
                     </li>
                 </ul>
-                
             </div>
             
             <!-- /.navbar-collapse -->
         </div>
-        
-        
         <!-- /.container-fluid -->
     </nav>
     
+    <!-- 메일 보내기 시작 -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                         <h4 class="modal-title" id="exampleModalLabel" style = "color:black;">건의 & 학교추가</h4>
+                     </div>
+                     <div class="modal-body">
+                        <form class="form-horizontal" action = "/home/email_send" method = "POST">
+                          <div class="form-group">
+                            <label class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                              <p class="form-control-static">qwer_run@naver.com</p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="email_address" class="col-sm-2 control-label">보내는이</label>
+                            <div class="col-sm-10">
+                              <input type="email" name = "flyer" class="form-control" id="email_address" placeholder="이메일을 입력해 주세요">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="content" class="col-sm-2 control-label">내용</label>
+                            <div class="col-sm-10">
+                              <textarea class="form-control" name = "content" rows="5" placeholder = "내용을 입력해 주세요"></textarea>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">보내기</button>
+                          </div>
+                        </form>
+                     </div>
+                 </div>
+                </div>
+             </div>   
+             <!-- 메일 보내기 끝 -->
+    
     <!-- Header -->
+    
     <header>
         <div class="container">
-            <!-- 회원가입 모달 시작 -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="exampleModalLabel" style = "color:black;">New message</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form action="/home/sign" method="post" class ="sign_up">
-                                <div class="form-group">
-                                    <input type="text"  id="log" name = "summoner" class="form-control" placeholder="소환사이름을 적어주세요" required>
-                                </div>
-                                <div class="form-group">
-                                     <select class="selectpicker form-control" name = "university_major"  id="log2" data-live-search="true" required >
-                                      <option value="" disabled selected>학교-전공</option>
-                                      <option value = "전남대 경영학과">전남대 경영학과</option>
-                                      <option value = "전남대 행정학과">전남대 행정학과</option>
-                                      <option value = "전남대 경제학과">전남대 경제학과</option>
-                                      <option value = "인하대 역사학과">인하대 역사학과</option>
-                                      <option value = "인하대 문헌정보학과">인하대 문헌정보학과</option>
-                                      <option value = "인하대 사회학과">인하대 사회학과</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <select class="form-control" name = "admission" id="log3" required>
-                                      <option value="" disabled selected>학번</option>  
-                                      <option value = "11">2011</option>
-                                      <option value = "12">2012</option>
-                                      <option value = "13">2013</option>
-                                      <option value = "14">2014</option>
-                                      <option value = "15">2015</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <select class="form-control" name = "sex" id="log4" required>
-                                      <option value="" disabled selected>성별</option>
-                                      <option value = "0">남성</option>
-                                      <option value = "1">여성</option>   
-                                    </select>
-                                </div>
-                                <div class="alert alert-danger" role="alert">
-                                    <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> 본인이 아니면 분쟁이 발생할 수 있습니다.
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="submit" name="commit" class="btn btn-primary">소환사 등록</button>
-                                </div>
-                            </form>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>   
-            <!-- 회원가입 모달 끝 -->
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive" src="img/profile.png" alt="">
+                    <img class="img-responsive" src="/img/profile.png" alt="로고">
+                    <br>
                     <div class = "row">
                         <div class = "col-md-3"></div>
                         <div class = "col-md-6">
@@ -125,6 +104,7 @@
         </div>
     </header>
 
+    
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
         <div class="container">
@@ -135,17 +115,17 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-2 portfolio-item">
+                <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="/univ_img/서울대.png" class="img-responsive" alt="">
+                        <img src="/univ_img/조선대.png" class="img-responsive" alt="">
                     </a>
                 </div>
-                <div class="col-sm-2 portfolio-item">
+                <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -155,7 +135,7 @@
                         <img src="/univ_img/전남대.png" class="img-responsive" alt="">
                     </a>
                 </div>
-                <div class="col-sm-2 portfolio-item">
+                <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -163,36 +143,6 @@
                             </div>
                         </div>
                         <img src="/univ_img/인하대.png" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="col-sm-2 portfolio-item">
-                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="/univ_img/고려대.png" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="col-sm-2 portfolio-item">
-                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="/univ_img/중앙대.png" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="col-sm-2 portfolio-item">
-                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="/univ_img/부산대.png" class="img-responsive" alt="">
                     </a>
                 </div>
             </div>
@@ -205,38 +155,20 @@
 
     <!-- Footer -->
     <footer class="text-center">
-        <div class="footer-above">
+        <div class="footer-below">
             <div class="container">
                 <div class="row">
-                    <div class="footer-col col-md-4">
-                    </div>
-                    <div class="footer-col col-md-4">
-                        <h3>Around the Web</h3>
+                    <div class="col-lg-12">
+                        <h3>Around Web</h3>
                         <ul class="list-inline">
                             <li>
                                 <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
                             </li>
                             <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-envelope-o"></i></a>
+                                <a data-toggle="modal" data-target="#exampleModal" class="btn-social btn-outline" style="cursor:pointer"><i class="fa fa-envelope-o"></i></a>
                             </li>
                         </ul>
-                    </div>
-                    <div class="footer-col col-md-4">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-below">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        Copyright &copy; Your Website 2014
+                        Copyright &copy; qwer.run
                     </div>
                 </div>
             </div>
@@ -263,24 +195,10 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>서울대학교</h2>
+                            <h2>조선대학교</h2>
                             <hr class="star-primary">
-                            <img src="/univ_img/서울대.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                            <ul class="list-inline item-details">
-                                <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                    </strong>
-                                </li>
-                                <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
-                                    </strong>
-                                </li>
-                            </ul>
+                            <img src="/univ_img/조선대.png" class="img-responsive img-centered" alt="">
+                            <h4>재미있는 통계로 찾아 뵙겠습니다.<br><br> 조금만 기다려 주세요 ㅠㅠ</h4><br>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
                     </div>
@@ -303,21 +221,7 @@
                             <h2>전남대학교</h2>
                             <hr class="star-primary">
                             <img src="/univ_img/전남대.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                            <ul class="list-inline item-details">
-                                <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                    </strong>
-                                </li>
-                                <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
-                                    </strong>
-                                </li>
-                            </ul>
+                            <h4>재미있는 통계로 찾아 뵙겠습니다.<br><br> 조금만 기다려 주세요 ㅠㅠ</h4><br>  
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
                     </div>
@@ -337,24 +241,10 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Project Title</h2>
+                            <h2>인하대학교</h2>
                             <hr class="star-primary">
                             <img src="img/portfolio/circus.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                            <ul class="list-inline item-details">
-                                <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                    </strong>
-                                </li>
-                                <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
-                                    </strong>
-                                </li>
-                            </ul>
+                            <h4>재미있는 통계로 찾아 뵙겠습니다.<br><br> 조금만 기다려 주세요 ㅠㅠ</h4><br>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
                     </div>
@@ -362,117 +252,7 @@
             </div>
         </div>
     </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Project Title</h2>
-                            <hr class="star-primary">
-                            <img src="img/portfolio/game.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                            <ul class="list-inline item-details">
-                                <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                    </strong>
-                                </li>
-                                <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
-                                    </strong>
-                                </li>
-                            </ul>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Project Title</h2>
-                            <hr class="star-primary">
-                            <img src="img/portfolio/safe.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                            <ul class="list-inline item-details">
-                                <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                    </strong>
-                                </li>
-                                <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
-                                    </strong>
-                                </li>
-                            </ul>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Project Title</h2>
-                            <hr class="star-primary">
-                            <img src="img/portfolio/submarine.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                            <ul class="list-inline item-details">
-                                <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                    </strong>
-                                </li>
-                                <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
-                                    </strong>
-                                </li>
-                            </ul>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
         
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
@@ -483,23 +263,6 @@
 
    
     
-    <!-- check submit -->
-    <script>
-    $('.sign_up').submit(function () {
-
-    // Get the Login Name value and trim it
-    var name = $.trim($('#log').val());
-    var name2 = $.trim($('#log2').val());
-    var name3 = $.trim($('#log3').val());
-    var name4 = $.trim($('#log4').val());
-    
-    // Check if empty of not
-    if (name == '' || name2 == '' || name3 == '' || name4 == '') {
-        return false;
-    }
-    });
-    </script>
-    
     <!-- Bootstrap Core JavaScript -->
     <script src="/js/bootstrap.min.js"></script>
     <!-- submit check jquery -
@@ -508,5 +271,4 @@
     <!-- Plugin JavaScript -->
     <script src="/js/classie.js"></script>
     <script src="/js/cbpAnimatedHeader.js"></script>
-
- 
+    

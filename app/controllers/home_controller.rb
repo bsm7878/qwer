@@ -295,7 +295,7 @@ class HomeController < ApplicationController
                     @image = "/lol_img/Nami.png" #나미
                 when "268"
                     @image = "/lol_img/Azir.png" #아지르
-                when ""
+                when "421"
                     @image = "/lol_img/RekSai.png" #렉사이
                 when "432"
                     @image = "/lol_img/Bard.png" #바드
@@ -305,8 +305,10 @@ class HomeController < ApplicationController
                     @image = "/lol_img/Illaoi.png" #일라오이
                 when "429"
                     @image = "/lol_img/Kalista.png" #칼리스타
+                when "163"
+                    @image = "/lol_img/Taliyah.png" #탈리야
                 else
-                    @image = "/lol_img/.png" #준비중
+                    @image = "/lol_img/Illaoi.png" #준비중
                 end
             end
             
@@ -617,7 +619,7 @@ class HomeController < ApplicationController
                     @image = "/lol_img/Nami.png" #나미
                 when 268
                     @image = "/lol_img/Azir.png" #아지르
-                when 
+                when 421
                     @image = "/lol_img/RekSai.png" #렉사이
                 when 432
                     @image = "/lol_img/Bard.png" #바드
@@ -882,7 +884,7 @@ class HomeController < ApplicationController
       flyer = params[:flyer]
       content = params[:content]
       Anycall.welcome_email(flyer, content).deliver_now
-      redirect_to '/'
+      redirect_to :back
   end
   
   

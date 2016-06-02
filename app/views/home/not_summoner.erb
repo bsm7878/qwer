@@ -31,7 +31,8 @@
                         (<%= @tier_info %> <%= @division_info %>)
                     </div>
                     <br>
-                    <form action="/home/sign" method="post">
+                    <form action="/home/sign" method="GET">
+                      <input type = "hidden" value = "<%= @ab %>" name = "name">    
                       <div class="form-group">
                           <select class=" form-control js-example-basic-single" name = "university_major" required  >
                               <option value="" disabled selected>학교-전공</option>

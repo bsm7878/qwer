@@ -8,7 +8,7 @@ class HomeController < ApplicationController
   
   
   def school
-    @@summoner = Summoner.where(:summoner => params[:name].gsub(/\s+/, "").downcase).take
+    @@summoner = Summoner.where(:summoner => params[:name]).take
     @@abc = params[:name].gsub(/\s+/, "").downcase
     @@abc2 = params[:name]
     
@@ -339,7 +339,7 @@ class HomeController < ApplicationController
             @univ_list = UnivMajor.all # 대학 리스트 불러오기
 
             #소환사 고유 id 불러오기
-            name = URI.encode(@@abc.gsub(/\s+/, "").downcase)
+            name = URI.encode(@ab)
             name_uri = "https://kr.api.pvp.net/api/lol/kr/v1.4/summoner/by-name/#{name}?api_key=0827b90b-3e3b-44db-aca4-ac10ebce0f1c"
             source = name_uri
             resp = Net::HTTP.get_response(URI.parse(source))
@@ -347,7 +347,7 @@ class HomeController < ApplicationController
             result = JSON.parse(data)
             unless result["status"].present? #등록이 되어있으면!
             
-                    result2 = result[@@abc.gsub(/\s+/, "").downcase]['id'] #소환사 id
+                    result2 = result[@ab]['id'] #소환사 id
                 
                     #소환사 정보 불러오기
                     information_uri = "https://kr.api.pvp.net/api/lol/kr/v2.5/league/by-summoner/#{result2}/entry?api_key=0827b90b-3e3b-44db-aca4-ac10ebce0f1c"
@@ -651,11 +651,12 @@ class HomeController < ApplicationController
   
   def sign #회원가입
   
-        
-        unless Summoner.where(:summoner => @@abc).present?  
+        sign_name = params[:name]
+        sign_name_down = params[:name].gsub(/\s+/, "").downcase
+        unless Summoner.where(:summoner => sign_name).present?  
             
             #소환사 고유 id 불러오기
-            name = URI.encode(@@abc)
+            name = URI.encode(sign_name_down)
             name_uri = "https://kr.api.pvp.net/api/lol/kr/v1.4/summoner/by-name/#{name}?api_key=0827b90b-3e3b-44db-aca4-ac10ebce0f1c"
             source = name_uri
             resp = Net::HTTP.get_response(URI.parse(source))
@@ -663,7 +664,7 @@ class HomeController < ApplicationController
             result = JSON.parse(data)
 
             
-                    result2 = result[@@abc]['id'] #소환사 id
+                    result2 = result[sign_name_down]['id'] #소환사 id
                 
                     #소환사 정보 불러오기
                     information_uri = "https://kr.api.pvp.net/api/lol/kr/v2.5/league/by-summoner/#{result2}/entry?api_key=0827b90b-3e3b-44db-aca4-ac10ebce0f1c"
@@ -682,7 +683,7 @@ class HomeController < ApplicationController
                     result_champion2 = JSON.parse(data2)
                     result_champion = result_champion2[0]["championId"]
                     summoner = Summoner.new
-                    summoner.summoner = @@abc #소환사 이름_in summoner
+                    summoner.summoner = sign_name #소환사 이름_in summoner
                     summoner.summoner_number = result2 #소환사 id_in summoner
                     summoner.university = params[:university_major].split[0] #대학_in summoner
                     summoner.save
@@ -728,7 +729,7 @@ class HomeController < ApplicationController
                       id2 = Summoner.where(:summoner_number => result2).take
                       jnu = Jnu.new
                       jnu.summoner_id = id2.id
-                      jnu.summoner = @@abc2
+                      jnu.summoner = sign_name
                       jnu.tier = tier_info
                       jnu.division = division_info
                       jnu.point = point_info
@@ -747,7 +748,7 @@ class HomeController < ApplicationController
                       id2 = Summoner.where(:summoner_number => result2).take
                       jnu = Inha.new
                       jnu.summoner_id = id2.id
-                      jnu.summoner = @@abc2
+                      jnu.summoner = sign_name
                       jnu.tier = tier_info
                       jnu.division = division_info
                       jnu.point = point_info
@@ -765,7 +766,7 @@ class HomeController < ApplicationController
                       id2 = Summoner.where(:summoner_number => result2).take
                       jnu = Chosun.new
                       jnu.summoner_id = id2.id
-                      jnu.summoner = @@abc2
+                      jnu.summoner = sign_name
                       jnu.tier = tier_info
                       jnu.division = division_info
                       jnu.point = point_info
@@ -784,7 +785,7 @@ class HomeController < ApplicationController
                       
                     end
           
-                redirect_to controller: 'home', action: 'school', name: @@abc
+                redirect_to controller: 'home', action: 'school', name: sign_name
             else
                 redirect_to '/'
             end

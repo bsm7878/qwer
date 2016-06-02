@@ -8,9 +8,9 @@ class HomeController < ApplicationController
   
   
   def school
-    @@summoner = Summoner.where(:summoner => params[:name]).take
-    @@abc = params[:name].gsub(/\s+/, "").downcase
-    @@abc2 = params[:name]
+    @@summoner = Summoner.where(:summoner => params[:name].gsub(/\s+/, "").downcase).take
+    @@abc = params[:name]
+
     
     unless @@summoner.nil?
             #대학별 db에 뿌려줄 함수 만들기
@@ -326,7 +326,8 @@ class HomeController < ApplicationController
             university_rank_hash["전남대"] = [Jnu.all.sum(:total_point)/Jnu.all.count, "/univ_img/jnu.png"]
             university_rank_hash["인하대"] = [Inha.all.sum(:total_point)/Inha.all.count, "/univ_img/inha_univ.png"]
             university_rank_hash["조선대"] = [Chosun.all.sum(:total_point)/Chosun.all.count, "/univ_img/chosun.png"]
-            @university_rank_final = university_rank_hash.sort_by {|k,v| v[0]}.reverse #크기가 큰 순서로 정렬  
+            @university_rank_final = university_rank_hash.sort_by {|k,v| v[0]}.reverse #크기가 큰 순서로 정렬
+    
     else #사이트에 회원이 등록 안되어있으면!
         redirect_to '/home/not_summoner'
     end #사이트에 회원이 등록 안되어있으면 unless문 종료!
@@ -335,7 +336,8 @@ class HomeController < ApplicationController
   
   
   def not_summoner #검색했는데 사이트에 등록이 안되어 있을때
-            @ab = @@abc # erb 파일에 소환사 이름 출력
+            @ab = @@abc.gsub(/\s+/, "").downcase 
+            @ab2 = @@abc # erb 파일에 소환사 이름 출력
             @univ_list = UnivMajor.all # 대학 리스트 불러오기
 
             #소환사 고유 id 불러오기
@@ -683,7 +685,7 @@ class HomeController < ApplicationController
                     result_champion2 = JSON.parse(data2)
                     result_champion = result_champion2[0]["championId"]
                     summoner = Summoner.new
-                    summoner.summoner = sign_name #소환사 이름_in summoner
+                    summoner.summoner = sign_name_down #소환사 이름_in summoner
                     summoner.summoner_number = result2 #소환사 id_in summoner
                     summoner.university = params[:university_major].split[0] #대학_in summoner
                     summoner.save
@@ -795,7 +797,7 @@ class HomeController < ApplicationController
   
   def update #최신정보 업데이트
     
-    @@summoner2 = Summoner.where(:summoner => params[:name]).take
+    @@summoner2 = Summoner.where(:summoner => params[:name].gsub(/\s+/, "").downcase).take
     
     def update_method(university_name)
             #챔피언 정보 가져오기

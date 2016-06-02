@@ -27,12 +27,12 @@
                     <div class = "text-center">
                         <img src="<%= @image %>" alt="캐릭터사진" class="img-circle">
                         <br><br>
-                        <span style = "color: black; font-size: 20px; font-weight: bold;"><%= @ab %></span><br>
+                        <span style = "color: black; font-size: 20px; font-weight: bold;"><%= @ab2 %></span><br>
                         (<%= @tier_info %> <%= @division_info %>)
                     </div>
                     <br>
                     <form action="/home/sign" method="GET">
-                      <input type = "hidden" value = "<%= @ab %>" name = "name">    
+                      <input type = "hidden" value = "<%= @ab2 %>" name = "name">    
                       <div class="form-group">
                           <select class=" form-control js-example-basic-single" name = "university_major" required  >
                               <option value="" disabled selected>학교-전공</option>

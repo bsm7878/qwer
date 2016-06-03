@@ -9,7 +9,8 @@ class HomeController < ApplicationController
   
   def school
     @@summoner = Summoner.where(:summoner => params[:name].gsub(/\s+/, "").downcase).take
-    @@abc = params[:name]
+    #@@abc = params[:name]
+    show_name = params[:name]
 
     
     unless @@summoner.nil?
@@ -329,15 +330,16 @@ class HomeController < ApplicationController
             @university_rank_final = university_rank_hash.sort_by {|k,v| v[0]}.reverse #크기가 큰 순서로 정렬
     
     else #사이트에 회원이 등록 안되어있으면!
-        redirect_to '/home/not_summoner'
+        #redirect_to '/home/not_summoner'
+        redirect_to controller: 'home', action: 'not_summoner', name: show_name
     end #사이트에 회원이 등록 안되어있으면 unless문 종료!
     
   end
   
   
   def not_summoner #검색했는데 사이트에 등록이 안되어 있을때
-            @ab = @@abc.gsub(/\s+/, "").downcase 
-            @ab2 = @@abc # erb 파일에 소환사 이름 출력
+            @ab = params[:name].gsub(/\s+/, "").downcase 
+            @ab2 = params[:name] # erb 파일에 소환사 이름 출력
             @univ_list = UnivMajor.all # 대학 리스트 불러오기
 
             #소환사 고유 id 불러오기

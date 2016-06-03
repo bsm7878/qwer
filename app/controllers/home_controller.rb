@@ -654,7 +654,6 @@ class HomeController < ApplicationController
   
   
   def sign #회원가입
-  
         sign_name = params[:name]
         sign_name_down = params[:name].gsub(/\s+/, "").downcase
         unless Summoner.where(:summoner => sign_name).present?  
@@ -904,5 +903,27 @@ class HomeController < ApplicationController
     add.save
     redirect_to :back
   end
+  
+  def all_summoner # 등록된 유저 보여주기 & 삭제
+    @all_summoner = Summoner.all    
+  end
+  
+  def summoner_delete # 등록된 유저 삭제 파라미터 
+      Summoner.find(params[:delete_id].to_i).destroy
+      if params[:delete_univ] == "전남대"
+          Jnu.where(:summoner_id => params[:delete_id].to_i).take.destroy
+      elsif params[:delete_univ] == "인하대"
+          Inha.where(:summoner_id => params[:delete_id].to_i).take.destroy  
+      elsif params[:delete_univ] == "조선대"
+          Chosun.where(:summoner_id => params[:delete_id].to_i).take.destroy
+      else
+          redirect_to '/'
+      end
+    
+      redirect_to :back     
+  end
+  
+  
+  
   
 end

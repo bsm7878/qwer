@@ -1,9 +1,10 @@
+<% if request.remote_ip == "110.9.60.46" %>
 <div class = "container">
     <div class = "row">
         <div clas = "col-md-4"></div>
         <div clas = "col-md-4">
             
-        <% if request.remote_ip == "110.9.60.46" %>
+        
             <table class="table table-hover" al>
               <thead>
                 <tr>
@@ -32,12 +33,31 @@
                 <% end %>
               </tbody>
             </table>
-        <% else %>
-            권한이 없습니다.
-        <% end %>    
+          
             
         </div>
         <div clas = "col-md-4"></div>
     </div>
+    <br><br>
+    <div class = "row">
+      <h4>전남대 티어 분류</h4>
+      브론즈: <%= @a %><br>
+      실버: <%= @b %><br>
+      골드: <%= @c %><br>
+      플래: <%= @d %><br>
+      다이아: <%= @e %><br>
+      마스터: <%= @f %><br>
+      챌린저: <%= @g %>
+    </div>
+    <br><br>
+    <div class = "row">
+      <h4>전남대 성별 분포도</h4>
+      남성: <%= @mail %><br>
+      여성: <%= @femail %>
+    </div>
 </div>
+
+<% else %>
+    <h2>권한이 없습니다.</h2>
+<% end %>  
 

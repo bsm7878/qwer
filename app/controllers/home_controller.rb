@@ -905,7 +905,18 @@ class HomeController < ApplicationController
   end
   
   def all_summoner # 등록된 유저 보여주기 & 삭제
-    @all_summoner = Summoner.all    
+    @all_summoner = Summoner.all
+    
+    @a = Jnu.where(:tier => "BRONZE").count
+    @b = Jnu.where(:tier => "SILVER").count
+    @c = Jnu.where(:tier => "GOLD").count
+    @d = Jnu.where(:tier => "PLATINUM").count
+    @e = Jnu.where(:tier => "DIAMOND").count
+    @f = Jnu.where(:tier => "MASTER").count
+    @g = Jnu.where(:tier => "CHALLENGER").count
+    
+    @mail = Jnu.where(:sex => false).count
+    @femail = Jnu.where(:sex => true).count
   end
   
   def summoner_delete # 등록된 유저 삭제 파라미터 
@@ -919,7 +930,8 @@ class HomeController < ApplicationController
       else
           redirect_to '/'
       end
-    
+      
+          
       redirect_to :back     
   end
   

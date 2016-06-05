@@ -1,5 +1,58 @@
-<% if request.remote_ip == "110.9.60.46" %>
+<% if request.remote_ip == "110.9.60.46" || request.remote_ip == "123.100.171.100" %>
 <div class = "container">
+    <div class = "row">
+      <div class = "col-md-4">
+        <h4>전남대 티어 분류</h4>
+        브론즈: <%= @bronze_jnu %><br>
+        실버: <%= @silver_jnu %><br>
+        골드: <%= @gold_jnu %><br>
+        플래: <%= @platinum_jnu %><br>
+        다이아: <%= @diamond_jnu %><br>
+        마스터: <%= @master_jnu %><br>
+        챌린저: <%= @challenger_jnu %>  
+      </div>
+      <div class = "col-md-4">
+        <h4>인하대 티어 분류</h4>
+        브론즈: <%= @bronze_inha %><br>
+        실버: <%= @silver_inha %><br>
+        골드: <%= @gold_inha %><br>
+        플래: <%= @platinum_inha %><br>
+        다이아: <%= @diamond_inha %><br>
+        마스터: <%= @master_inha %><br>
+        챌린저: <%= @challenger_inha %>    
+      </div>
+      <div class = "col-md-4">
+        <h4>조선대 티어 분류</h4>
+        브론즈: <%= @bronze_chosun %><br>
+        실버: <%= @silver_chosun %><br>
+        골드: <%= @gold_chosun %><br>
+        플래: <%= @platinum_chosun %><br>
+        다이아: <%= @diamond_chosun %><br>
+        마스터: <%= @master_chosun %><br>
+        챌린저: <%= @challenger_chosun %>    
+      </div>
+        
+    </div>
+    <br><br>
+    <div class = "row">
+      <div class = "col-md-4">
+        <h4>전남대 성별 분포도</h4>
+        남성: <%= @mail_jnu %><br>
+        여성: <%= @femail_jnu %>  
+      </div>
+      <div class = "col-md-4">
+        <h4>인하대 성별 분포도</h4>
+        남성: <%= @mail_inha %><br>
+        여성: <%= @femail_inha %>  
+      </div>
+      <div class = "col-md-4">
+        <h4>조선대 성별 분포도</h4>
+        남성: <%= @mail_chosun %><br>
+        여성: <%= @femail_chosun %>  
+      </div>
+        
+    </div>
+    <br><br>
     <div class = "row">
         <div clas = "col-md-4"></div>
         <div clas = "col-md-4">
@@ -38,23 +91,7 @@
         </div>
         <div clas = "col-md-4"></div>
     </div>
-    <br><br>
-    <div class = "row">
-      <h4>전남대 티어 분류</h4>
-      브론즈: <%= @a %><br>
-      실버: <%= @b %><br>
-      골드: <%= @c %><br>
-      플래: <%= @d %><br>
-      다이아: <%= @e %><br>
-      마스터: <%= @f %><br>
-      챌린저: <%= @g %>
-    </div>
-    <br><br>
-    <div class = "row">
-      <h4>전남대 성별 분포도</h4>
-      남성: <%= @mail %><br>
-      여성: <%= @femail %>
-    </div>
+    
 </div>
 
 <% else %>

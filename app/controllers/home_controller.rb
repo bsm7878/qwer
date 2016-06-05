@@ -905,18 +905,47 @@ class HomeController < ApplicationController
   end
   
   def all_summoner # 등록된 유저 보여주기 & 삭제
-    @all_summoner = Summoner.all
+    @all_summoner = Summoner.all # 모든 유저 보여주기 => 삭제할때
     
-    @a = Jnu.where(:tier => "BRONZE").count
-    @b = Jnu.where(:tier => "SILVER").count
-    @c = Jnu.where(:tier => "GOLD").count
-    @d = Jnu.where(:tier => "PLATINUM").count
-    @e = Jnu.where(:tier => "DIAMOND").count
-    @f = Jnu.where(:tier => "MASTER").count
-    @g = Jnu.where(:tier => "CHALLENGER").count
+    # 전남대 티어 분류
+    @bronze_jnu = Jnu.where(:tier => "BRONZE").count
+    @silver_jnu = Jnu.where(:tier => "SILVER").count
+    @gold_jnu = Jnu.where(:tier => "GOLD").count
+    @platinum_jnu = Jnu.where(:tier => "PLATINUM").count
+    @diamond_jnu = Jnu.where(:tier => "DIAMOND").count
+    @master_jnu = Jnu.where(:tier => "MASTER").count
+    @challenger_jnu = Jnu.where(:tier => "CHALLENGER").count#
+    # 전남대 성별 구성도
+    @mail_jnu = Jnu.where(:sex => false).count
+    @femail_jnu = Jnu.where(:sex => true).count
     
-    @mail = Jnu.where(:sex => false).count
-    @femail = Jnu.where(:sex => true).count
+    # 인하대 티어 분류
+    @bronze_inha = Inha.where(:tier => "BRONZE").count
+    @silver_inha = Inha.where(:tier => "SILVER").count
+    @gold_inha = Inha.where(:tier => "GOLD").count
+    @platinum_inha = Inha.where(:tier => "PLATINUM").count
+    @diamond_inha = Inha.where(:tier => "DIAMOND").count
+    @master_inha = Inha.where(:tier => "MASTER").count
+    @challenger_inha = Inha.where(:tier => "CHALLENGER").count#
+    # 인하대 성별 구성도
+    @mail_inha = Inha.where(:sex => false).count
+    @femail_inha = Inha.where(:sex => true).count
+    
+    # 조선대 티어 분류
+    @bronze_chosun = Chosun.where(:tier => "BRONZE").count
+    @silver_chosun = Chosun.where(:tier => "SILVER").count
+    @gold_chosun = Chosun.where(:tier => "GOLD").count
+    @platinum_chosun = Chosun.where(:tier => "PLATINUM").count
+    @diamond_chosun = Chosun.where(:tier => "DIAMOND").count
+    @master_chosun = Chosun.where(:tier => "MASTER").count
+    @challenger_chosun = Chosun.where(:tier => "CHALLENGER").count#
+    # 조선대 성별 구성도
+    @mail_chosun = Chosun.where(:sex => false).count
+    @femail_chosun = Chosun.where(:sex => true).count
+    
+    
+    
+    
   end
   
   def summoner_delete # 등록된 유저 삭제 파라미터 

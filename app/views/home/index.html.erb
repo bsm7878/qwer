@@ -13,9 +13,9 @@
                     <div class = "row">
                         <div class = "col-md-3"></div>
                         <div class = "col-md-6">
-
-                            <div class="fb-like" style = "float:right; width:100px; margin-bottom: 5px;" data-href="https://www.facebook.com/qwerrun" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
-
+                            <!-- 페이스북 바로 가기 버튼 -->
+                            <a class="btn btn-warning btn-xs"  style = "float:right;  margin-bottom: 5px;"  target="_blank" href="https://www.facebook.com/qwerrun/" role="button">재밌는 통계가 더 궁금하다면?</a>
+                            <!-- 검색 form -->
                             <form action = "/home/school" method = "GET">
                               <div class="form-group ">
                                 <input type="text" name = "name" class="form-control" placeholder="소환사 이름을 적어주세요..">
@@ -69,6 +69,16 @@
                             </div>
                         </div>
                         <img src="/univ_img/인하대.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="/univ_img/부산대.png" class="img-responsive" alt="">
                     </a>
                 </div>
             </div>
@@ -150,7 +160,30 @@
                         <div class="modal-body">
                             <h2>인하대학교</h2>
                             <hr class="star-primary">
-                            <img src="img/portfolio/circus.png" class="img-responsive img-centered" alt="">
+                            <img src="/univ_img/인하대.png" class="img-responsive img-centered" alt="">
+                            <h4>재미있는 통계로 찾아 뵙겠습니다.<br><br> 조금만 기다려 주세요 ㅠㅠ</h4><br>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>부산대학교</h2>
+                            <hr class="star-primary">
+                            <img src="/univ_img/부산대.png" class="img-responsive img-centered" alt="">
                             <h4>재미있는 통계로 찾아 뵙겠습니다.<br><br> 조금만 기다려 주세요 ㅠㅠ</h4><br>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>

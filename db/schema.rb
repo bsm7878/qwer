@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530164723) do
+ActiveRecord::Schema.define(version: 20160606135615) do
+
+  create_table "busans", force: :cascade do |t|
+    t.integer  "summoner_id"
+    t.string   "tier"
+    t.string   "division"
+    t.integer  "point"
+    t.integer  "win"
+    t.integer  "loose"
+    t.integer  "total_point"
+    t.string   "champion"
+    t.string   "summoner"
+    t.string   "summoner_number"
+    t.string   "university"
+    t.string   "major"
+    t.string   "admission"
+    t.boolean  "sex"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "chosuns", force: :cascade do |t|
     t.integer  "summoner_id"

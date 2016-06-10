@@ -319,7 +319,9 @@ class HomeController < ApplicationController
             when "인하대"
                 school_name(Inha) 
             when "조선대"
-                school_name(Chosun) 
+                school_name(Chosun)
+            when "부산대"
+                school_name(Busan)    
             end
             
             #전국 대학별 순위
@@ -327,6 +329,7 @@ class HomeController < ApplicationController
             university_rank_hash["전남대"] = [Jnu.all.sum(:total_point)/Jnu.all.count, "/univ_img/jnu.png"]
             university_rank_hash["인하대"] = [Inha.all.sum(:total_point)/Inha.all.count, "/univ_img/inha_univ.png"]
             university_rank_hash["조선대"] = [Chosun.all.sum(:total_point)/Chosun.all.count, "/univ_img/chosun.png"]
+            university_rank_hash["부산대"] = [Busan.all.sum(:total_point)/Busan.all.count, "/univ_img/busan.jpg"]
             @university_rank_final = university_rank_hash.sort_by {|k,v| v[0]}.reverse #크기가 큰 순서로 정렬
     
     else #사이트에 회원이 등록 안되어있으면!
@@ -783,6 +786,25 @@ class HomeController < ApplicationController
                       jnu.sex = params[:sex]
                       jnu.champion = result_champion 
                       jnu.save 
+                     
+                     when "부산대"
+                      id2 = Summoner.where(:summoner_number => result2).take
+                      jnu = Busan.new
+                      jnu.summoner_id = id2.id
+                      jnu.summoner = sign_name
+                      jnu.tier = tier_info
+                      jnu.division = division_info
+                      jnu.point = point_info
+                      jnu.win = win_info
+                      jnu.loose = loose_info
+                      jnu.total_point = tier_point + division_point + point_info
+                      jnu.summoner_number = result2
+                      jnu.university = params[:university_major].split[0] 
+                      jnu.major = params[:university_major].split[1] 
+                      jnu.admission = params[:admission]
+                      jnu.sex = params[:sex]
+                      jnu.champion = result_champion 
+                      jnu.save
                       
                     else
                       
@@ -873,6 +895,8 @@ class HomeController < ApplicationController
         update_method(Inha)
     when "조선대"   
         update_method(Chosun)
+    when "부산대"   
+        update_method(Busan)
     else
       
     end
@@ -956,6 +980,8 @@ class HomeController < ApplicationController
           Inha.where(:summoner_id => params[:delete_id].to_i).take.destroy  
       elsif params[:delete_univ] == "조선대"
           Chosun.where(:summoner_id => params[:delete_id].to_i).take.destroy
+      elsif params[:delete_univ] == "부산대"
+          Busan.where(:summoner_id => params[:delete_id].to_i).take.destroy
       else
           redirect_to '/'
       end

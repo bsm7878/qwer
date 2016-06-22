@@ -1,0 +1,89 @@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> 
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .modal-backdrop {
+          z-index: -1;
+        }
+    </style>
+    
+    <!-- navigation -->
+    <%= render :partial => "home/header" %>
+    
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <br><br>
+                <div class="col-lg-12 text-center">
+                    <h2>죄송합니다</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col-md-1"></div>
+                <div class="col-md-10" style = "text-align: center; font-size: 30px;">
+                    <span style = "font-weight: bold;">"<%= @name %>"</span>님의 아이디로 다른 사람들이 등록하는 경우가 많아<br> <br>
+                    불편하시겠지만 따로 인증을 부탁드립니다 ㅠㅠ
+                    <br><br>
+                    
+                    <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseExample" style = "width:30%; font-weight: bold; font-size:20px;" aria-expanded="false" aria-controls="collapseExample">
+                      인증하기
+                    </button>
+                    
+                    
+                    <div class="collapse" id="collapseExample" style = "margin-top:15px;">
+                      <div class="well">
+                        <form class="form-inline" action = "/home/email_send" method = "POST">
+                          <div class="form-group">
+                            <label class="sr-only" for="exampleInputEmail3">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail3" name = "flyer" placeholder="답변 받으실 이메일">
+                          </div>
+                          <div class="form-group">
+                            <input type ="hidden" name = "content" value = "ban 풀어주세요!!">
+                          </div>
+                          <button type="submit" class="btn btn-default">보내기</button>
+                        </form>
+                      </div>
+                    </div>
+                    
+                    
+                </div>
+                <div class = "col-md-1"></div>
+                
+            </div>
+        </div>
+    </section>
+
+    
+
+
+
+    <!-- Footer -->
+    <%= render :partial => "home/footer" %>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    
+        
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+    
+   
+    
+
+
+    <!-- Plugin JavaScript -->
+    <script src="/js/classie.js"></script>
+    <script src="/js/cbpAnimatedHeader.js"></script>
+

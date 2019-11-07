@@ -1,24 +1,30 @@
+<h2>QWER</h2>
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+> 리그오브레전드(게임) 전국 대학생 순위 비교 플랫폼
 
+> 개발기간(16.03 ~ 16.06)
 
-Welcome to your Rails project on Cloud9 IDE!
+> 운영기간(16.06 ~ 16.11)
 
-To get started, just do the following:
+> ~~http://www.qwer.run~~
 
-1. Run the project with the "Run Project" button in the menu bar on top of the IDE.
-2. Preview your new app by clicking on the URL that appears in the Run panel below (https://boostrap-bsm7878.c9users.io/).
+> <a href ="https://blog.naver.com/bsm7878/220703126160">Blog</a>
+<hr>
+<h3>개발 프레임워크</h3>
+<hr>
 
-Happy coding!
-The Cloud9 IDE team
+>IDE - C9
 
+>언어 - Ruby
 
-## Support & Documentation
+>프레임워크 - Ruby On Rails
 
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+>DB - sqlite
+
+>서버 - Nginx, Aws
+
+>분석 - Google Analytics
+
+>버전관리 - Github
+
+>UI - Bootstrap
